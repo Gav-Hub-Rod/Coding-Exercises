@@ -1,0 +1,32 @@
+#Armstrong number function Test 1:
+##I will compute whether the value of the function matches that of the inputted number.
+
+##First the value's length(n) must be found to give the sum to the nth degree. 
+input_num = (351)
+    
+if type(input_num) != int:
+        raise ValueError("Input must be a integer")
+elif input_num < 0:
+        raise ValueError("Input must be positive")
+
+
+# Converting to string
+input_numST = str(input_num)
+
+##We convert the arm_num to a string to find significant figures > 0
+arm_num_len = len(input_numST)
+
+# Initialise the sum variable
+arm_num_sum = 0
+
+# Using for loop to go through each digit in the input number and add to sum value
+for ii in range(0,arm_num_len):
+    digit = float(input_numST[ii])
+    print(digit)
+    arm_num_sum +=  digit**arm_num_len
+
+    
+if arm_num_sum == input_num:
+    print(True)
+else:
+    print(False)
