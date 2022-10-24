@@ -1,0 +1,22 @@
+Euan Rodgers
+import math as m
+
+pt1 = [47,43]
+pt2 = [-25,-11]
+
+# As question specified input must be integer, check points for non-integers and return error if non-integer found
+if all(isinstance(item, int) for item in pt1) & all(isinstance(item, int) for item in pt2):
+    print('All of the items in the list are integers')
+else:
+    raise ValueError('Not all of the items in the list are integers')
+    
+if all(item>-100 and item<100 for item in pt1) and all(item>-100 and item<100 for item in pt2):
+    print('Point coordinates are between -100 and 100')
+else:
+    print('Point coordinates are outside -100 and 100')
+   
+
+# Calculated 
+d = m.sqrt(((pt2[0]-pt1[0])**2) + ((pt2[1]-pt1[1])**2))
+
+print(d)
