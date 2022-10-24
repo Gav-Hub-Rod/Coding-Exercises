@@ -1,0 +1,58 @@
+# Importing libraries
+import math as m
+import itertools
+import numpy as np
+
+# Number of beads
+N = 4
+
+# Creating Initial Bead Order
+bead_order = list(range(1,N+1))
+
+# Calculating all permutations of bead order
+array = itertools.permutations(bead_order)
+
+## Looping through all possible permutations and checking if adjacant numbers sum to prime
+
+# Initialising a empty array for storage
+primeLists = 0
+
+# For every permutation of the N length list
+for eachpermutation in array:
+
+    # Initialising the flag for each bead order
+    primeFlag = 0;
+    
+    # Changing tuple to list
+    currentList = list(eachpermutation)
+
+    # Append 1st value to end to complete loop
+    currentList.append(currentList[0])
+
+    # Looping through each permutation
+    for i in currentList:
+        
+        # Normal sum between adjacant beads 
+        if i<N:
+            sumNum = currentList[i-1] + currentList[i]
+            
+        # Sum between beads that complete the loop
+        if i == N:
+            sumNum = currentList[i-1]+currentList[(N-1)]
+                
+        # Prime Number check
+        for ii in range(2,int(m.sqrt(sumNum)) + 1):
+            if (sumNum%ii) == 0 or (sumNum%3)==0:
+                # If not prime then flag unchanged
+                primeFlag += 0
+            else:
+                # If prime then add to flag
+                primeFlag += 1
+              
+        # If all 4 combinations of beads are prime then save it as a possible combination
+        if primeFlag == 4:
+            primeLists += 1
+    
+    
+# Print number of possible combinations
+print(primeLists)
